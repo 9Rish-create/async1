@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+        // Задание 4
+
+        // Напишите функцию delay(ms), которая возвращает промис, переходящий в состояние "resolved" через ms миллисекунд.
+
+        // delay(2000).then(() => console.log('Это сообщение вывелось через 2 секунды'))
+
+
+
+        function delay(ms) {
+            return new Promise(resolve => {
+                setTimeout(() => resolve(`Это сообщение вывелось через ${ms} секунд`), ms)
+            })
+
+            
+        }
+
+        delay(2000).then(() => console.log('Это сообщение вывелось через 2 секунды'))
+
+
+    </script>
+</body>
+</html>

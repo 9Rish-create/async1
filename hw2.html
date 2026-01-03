@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // const promise = new Promise(res =>
+        //     {
+        //         setTimeout(
+        //             () => res('Я '),
+        //             1000
+        //         );
+        //     }
+        //  )
+       
+
+        // promise 
+        //     .then(result => result + 'использую ')
+        //     .then(result => result + 'цепочки ')
+        //     .then(result => result + 'обещаний')
+        //     .then(str => console.log(str)) 
+        // 
+        // К сожалению такой вариант не сработал на каждую итерацию, только на самый первый промис(((
+
+        const words = 'Я использую цепочки обещаний'.split(' ');
+        let promise = Promise.resolve(' ');
+
+        words.forEach(word => {
+            promise = promise
+                .then(currentStr => new Promise(resolve => {
+                    setTimeout( () => {
+                        currentStr += (currentStr ? ' ' : '') + word;
+                        resolve(currentStr)
+                    }, 1000
+
+                    );
+                }))
+        })
+        promise.then(finalStr => console.log(finalStr));
+        
+
+    </script>
+</body>
+</html>

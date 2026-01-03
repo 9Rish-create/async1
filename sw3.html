@@ -22,7 +22,11 @@
             })
         ];
 
-        Promise.all(promises).then(result => console.log(result))
+        
+        Promise.all(promises).then(([res1, res2]) => console.log(res1, res2));
+        Promise.all(promises).then(result => console.log(result[0], result[1]));
+
+        // Promise.all(promises).then(result => console.log(result))
     </script>
 </body>
 </html>
