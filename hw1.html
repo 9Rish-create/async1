@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+// Задание 1. Имитируем работу с сервером -  Promise
+
+// Написать функцию getList, которая возвращает Promise с данными о списке задач, имитируя задержку перед получением в 2 секунды:
+
+// [
+//     { id: 1, title: 'Task 1', isDone: false },
+//     { id: 2, title: 'Task 2', isDone: true },
+// ]
+
+// Написать скрипт который получит данные из функции getList и выведет на экран список задач.
+
+// Изменить промис так, чтобы он возвращал ошибку.
+
+// Дополнить скрипт так, чтобы если промис возвращает ошибку выводилось сообщение об ошибке.
+
+
+        // function getList () {
+        //     return new Promise(resolve =>{
+        //         setTimeout(()=> resolve([ 
+        //             { id: 1, title: 'Task 1', isDone: false },
+        //             { id: 2, title: 'Task 2', isDone: true },]
+        //         ), 2000)
+        //     })
+        // }
+
+        // getList()
+        //     .then(result => (console.log(result)))
+        
+        // function getList1 () {
+        //     return new Promise((resolve,reject) =>{
+        //         setTimeout(()=> reject('Произошла ошибка'), 2000
+
+        //         );
+        //     });
+        // }
+
+        // getList1()
+        //     .catch(error => (console.log(error)))
+
+
+        let isErrorNeeded = false;
+
+        function getList () {
+            return new Promise((resolve,reject) =>{
+                setTimeout( () => {
+                    if (isErrorNeeded) {
+                        reject( new Error('Произошла ошибка'))
+                    }
+                    else {
+                        resolve(
+                            [
+                                { id: 1, title: 'Task 1', isDone: false },
+                                { id: 2, title: 'Task 2', isDone: true },
+                            ]
+                        );
+                    }
+                }, 2000
+
+                );
+            });
+        }
+
+        getList()
+            .then(resolve => (console.log('Данные о списке задач:', resolve)))
+            .finally(()=> {isErrorNeeded = true; console.log('Теперь будет сообщение об ошибке');
+             getList()})
+            .catch(error => console.log(error))
+            
+        
+
+    </script>
+</body>
+</html>
