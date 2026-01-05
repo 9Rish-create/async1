@@ -25,22 +25,23 @@
         // 
         // К сожалению такой вариант не сработал на каждую итерацию, только на самый первый промис(((
 
-        // const words = 'Я использую цепочки обещаний'.split(' ');
-        // let promise = Promise.resolve(' ');
 
-        // words.forEach(word => {
-        //     promise = promise
-        //         .then(currentStr => new Promise(resolve => {
-        //             setTimeout( () => {
-        //                 currentStr += (currentStr ? ' ' : '') + word;
-        //                 resolve(currentStr)
-        //             }, 1000
+                const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-        //             );
-        //         }))
-        // })
-        // promise.then(finalStr => console.log(finalStr));
-        
+        async function buildPhrase() {
+        const words = ["Я", "использую", "цепочки", "обещаний"];
+        let result = "";
+
+        for (const word of words) {
+            await sleep(1000);
+            result += ` ${word}`;
+        }
+
+        return result.trim();
+        }
+
+        buildPhrase().then(r => console.log(r))
+                
 
     </script>
 </body>

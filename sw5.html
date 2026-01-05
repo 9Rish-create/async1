@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        (async () => {
+        function getPeople() {
+            return new Promise(resolve => {
+                setTimeout(
+                    () => resolve([{},{},{}]),
+                    1000
+                );
+            }
+                
+
+            );
+        }
+
+        // const resPromise = getPeople();
+        // resPromise.then(result => console.log(result));
+        const people = await getPeople();
+        console.log(people)
+        })()
+
+        (async () => {
+            const people = (await fetch('https://api.weatherstack.com/current?access_key=9453aa59a770657a3e8a12324ba4c521&query=NewDelhi')
+                .then(response => response.json())).results;
+            console.log(people)
+        }
+
+        )
+    </script>
+</body>
+</html>
