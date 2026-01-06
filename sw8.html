@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        async function chainDr (){
+            const message1 = await delay(1000, 'Первое сообщение через 1 секунду');
+            console.log(message1);
+
+            const message2 = await delay(2000, 'Второе сообщение через 2 секунды')
+            console.log(message2)
+        }
+        
+
+
+        function delay (ms, message) {
+            return new Promise(resolve => setTimeout(() => resolve(message), ms));
+        }
+
+        chainDr()
+    </script>
+</body>
+</html>

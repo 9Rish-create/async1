@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+                // Я - 1000
+                // использую - 800
+                // вызов - 1200
+                // обещаний - 700
+                // параллельно - 500
+
+
+            function delay(ms, message) {
+                return new Promise( resolve => {
+                    setTimeout( () => resolve(message), ms);
+                }
+
+                )};
+                const promises = [
+                    delay(1000, 'Я'),
+                    delay(800, 'использую'),
+                    delay(1200, 'вызов'),
+                    delay(700, 'обещаний'),
+                    delay(500, 'параллельно')
+                ];
+                Promise.all(promises).then(words => {console.log(words.join(' '))})
+            
+
+           
+
+ 
+    
+  
+
+
+
+
+        
+    </script>
+</body>
+</html>

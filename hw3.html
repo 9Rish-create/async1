@@ -20,6 +20,41 @@
         // параллельно - 500
         // Результат вывести в консоль.
 
+        function getString () {
+            const promises = [
+                new Promise(resolve => 
+                    setTimeout(
+                        () => resolve('Я'), 1000
+                    )
+                ),
+                new Promise(resolve => 
+                    setTimeout(
+                        () => resolve('использую'), 800
+                    )
+                ),
+                new Promise(resolve => 
+                    setTimeout(
+                        () => resolve('вызов'), 1200
+                    )
+                ),
+                new Promise(resolve => 
+                    setTimeout(
+                        () => resolve('обещаний'), 700
+                    )
+                ),
+                new Promise(resolve => 
+                    setTimeout(
+                        () => resolve('параллельно'), 500
+                    )
+                )
+            ];
+            Promise.all(promises).then(words => {
+                const result1 = words.join(' ');
+                console.log(result1)
+            })
+        }
+        getString()
+
         
     </script>
 </body>

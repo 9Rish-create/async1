@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function delay (ms,message) {
+            return new Promise(resolve => 
+                setTimeout( () => resolve(message), ms)
+            );
+        }
+
+        async function pushWords() {
+            console.log('Старт');
+
+            const words = [
+                {time: 600, word: 'приготовься'},
+                {time: 900, word: 'Арина'},
+                {time: 500, word: 'выходит'},
+                {time: 700, word: 'на'},
+                {time: 800, word: 'сцену'}
+            ];
+            for (const item of words) {
+                const word = await delay(item.time, item.word);
+                console.log(word)
+            }
+            await delay(1000, ' ').then(() => console.log('Отличная работа!'))
+        }
+
+        pushWords();
+
+
+      
+
+
+    </script>
+</body>
+</html>
